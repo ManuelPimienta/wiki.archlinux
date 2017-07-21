@@ -1,6 +1,7 @@
 Prerequisite software[editar]
 
-First ensure that the necessary tools are installed. Installing the package group base-devel should be sufficient; it includes make and additional tools needed for compiling from source.
+First ensure that the necessary tools are installed. Installing the package group base-devel should be sufficient; 
+it includes make and additional tools needed for compiling from source.
 One of the key tools for building packages is makepkg (provided by pacman), which does the following:
 Checks if package dependencies are installed.
 Downloads the source file(s) from the specified server(s).
@@ -12,8 +13,41 @@ Compresses the fakeroot environment into a package file.
 Stores the package file in the configured destination directory, which is the present working directory by default.
 
 Download and test the installation[editar]
-Download the source tarball of the software you want to package, extract it, and follow the author's steps to install the program. Make a note of all commands and/or steps needed to compile and install it. You will be repeating those same commands in the PKGBUILD file.
+
+Download the source tarball of the software you want to package, extract it, and follow the author's steps to install the program. 
+Make a note of all commands and/or steps needed to compile and install it. You will be repeating those same commands in the PKGBUILD file.
 Most software authors stick to the 3-step build cycle:
+
+./configure
+make
+make install
+
+This is a good time to make sure the program is working correctly.
 
 == Traducción ==
 
+Programas necesarios
+
+Asegúrese primero de que las herramientas necesarias estén instaladas. Instalando el grupo de paquetes base-devel debe ser suficiente;
+Incluye *make* y herramientas adicionales necesarias para compilar desde el codigo fuente.
+Una de las herramientas clave para la construcción de paquetes es makepkg (Proporcionado por pacman), que hace lo siguiente:
+1. Comprueba que las dependencias del paquete están instaladas.
+2. Descarga el(los) archivo(s) fuente desde el(los) servidor(es) especificado(s).
+3. Desempaque el(los) archivo(s) fuente(s).
+4. Compila el software y lo instala en un entorno fakeroot.
+5. Quita símbolos de los binarios y las bibliotecas.
+6. Genera el archivo del metapaquete que se incluye con cada paquete.
+7. Comprime el entorno fakeroot en un archivo de paquete.
+8. Almacena el archivo de paquete en el directorio de destino configurado, que es el directorio de trabajo actual de forma predeterminada.
+
+Descargar y probar la instalación
+
+Descargue el tarball con el codigo fuente del software que desea empaquetar, extráigalo, y ga los pasos del autor para instalar el programa.
+Anote todos los comandos y/o pasos necesarios para compilarlo e instalarlo. Usted repetirá los mismos comandos en el archivo PKGBUILD.
+La mayoría de los autores de software se adhieren al ciclo de compilación de 3 pasos:
+
+./configure
+make
+make install
+
+Este es un buen momento para asegurarse de que el programa funciona correctamente.
