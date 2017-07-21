@@ -24,4 +24,9 @@ instrucciones de instalación listas para ser instaladas por pacman.
 
 Un paquete de Arch no es más que un archivo tar o 'tarball', comprimido usando xz, que contiene los siguientes archivos generados por makepkg:
 * Archivos binarios para instalar.
-* .PKGINFO: Contiene todos los metadatos requeridos por pacman para tratar con paquetes, dependencias, etc.
+* .PKGINFO: contiene todos los metadatos requeridos por pacman para tratar con paquetes, dependencias, etc.
+* .MTREE: contiene hashes y marcas de tiempo de los archivos que se incluyen en la base de datos local para que pacman pueda verificar la 
+  integridad del paquete.
+* .INSTALL: un archivo opcional utilizado para ejecutar comandos después de la fase de instalación/actualización/eliminación. (Este archivo 
+  sólo está presente si se especifica en el PKGBUILD.)
+* .Changelog: un archivo opcional guardado por el responsable del paquete documentando los cambios del paquete. (No está presente en todos los paquetes.)
