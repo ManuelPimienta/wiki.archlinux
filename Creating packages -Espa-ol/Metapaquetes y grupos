@@ -1,1 +1,35 @@
+# Meta packages and groups
+A package group is a set of related packages, defined by the packager, which can be installed or uninstalled simultaneously by using the 
+group name as a substitute for each individual package name. Whilst a group is not a package, it can be installed in a similar fashion to
+a package, see Pacman#Installing package groups and PKGBUILD#groups.
 
+A meta package, often (though not always) titled with the -meta suffix, provides similar functionality to a package group in that it 
+enables multiple related packages to be installed or uninstalled simultaneously. Meta packages can be installed just like any other 
+package, see Pacman#Installing specific packages. The only difference between a meta package and a regular package is that a meta 
+package is empty and exists purely to link related packages together via dependencies.
+
+The advantage of a meta package, compared to a group, is that any new member packages will be installed when the meta package itself is 
+updated with a new set of dependencies. This is in contrast to a group where new group members will not be automatically installed. 
+The disadvantage of a meta package is that it is not as flexible as a group - you can choose which group members you wish to install 
+but you cannot choose which meta package dependencies you wish to install. Likewise you can uninstall group members without having to 
+remove the entire group however you cannot remove meta package dependencies without having to uninstall the meta package itself.
+
+== Traducción ==
+
+Metapaquetes y grupos
+
+Un grupo de paquetes es un conjunto de paquetes relacionados, definido por el empaquetador, que se pueden instalar o desinstalar 
+simultáneamente utilizando el nombre de grupo como un sustituto para cada nombre de paquete individual. Si bien un grupo no es 
+un paquete, puede instalarse de manera similar a un paquete, vea Pacman#Instalación de grupos de paquetes y PKGBUILD#groups.
+
+Un metapaquete a menudo (aunque no siempre) titulado con -meta sufijo, proporciona funcionalidad similar a un grupo de paquetes 
+que permite que se instalen o desinstalen simultáneamente varios paquetes relacionados. Metapaquetes pueden ser instalados como 
+cualquier otro paquete, vea Pacman#Installing paquetes específicos. La única diferencia entre un paquete meta y un paquete regular es
+que una meta paquete está vacío y existe puramente para vincular paquetes relacionados a través de dependencias.
+
+La ventaja de un paquete meta, en comparación con un grupo, es que cualquier nuevo miembro del paquete se instalará cuando el propio 
+metapaquete sea actualizado con un nuevo conjunto de dependencias. Esto contrasta con un grupo en el que los nuevos miembros del grupo 
+no se instalarán automáticamente. La desventaja de un metapaquete  es que no es tan flexible como un grupo - puede elegir los miembros 
+del grupo que desea instalar pero no puede elegir qué dependencias del metapaquete desea instalar. Asimismo, puede desinstalar los miembros 
+del grupo sin tener que quitar el grupo entero, sin embargo usted no puede quitar dependencias del metapaquete sin tener que desinstalar 
+el metapaquete en sí mismo. 
