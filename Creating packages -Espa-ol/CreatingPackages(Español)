@@ -1,1 +1,12 @@
+== Original ==
+This article aims to assist users creating their own packages using the Arch Linux "ports-like" build system, also for submission in AUR. 
+It covers creation of a PKGBUILD – a package build description file sourced by makepkg to create a binary package from source. 
+If already in possession of a PKGBUILD, see makepkg. For instructions regarding existing rules and ways to improve package quality see 
+Arch packaging standards.
 
+== Traducción ==
+Este artículo tiene como objetivo ayudar a los usuarios a crear sus propios paquetes utilizando el [Enlace= Sistema de Compilación de 
+Arch Linux], tambien para subirlo en [enlace=AUR]. Cubre la creación de un [enlace=PKGBUILD] - un archivo de descripción de compilación 
+de paquetes originado por makepkg para crear un paquete binario desde los archivos fuentes. Si ya está posee un archivo PKGBUILD, 
+vea [enlace=makepkg]. Para obtener instrucciones sobre las normas existentes y las formas de mejorar la calidad del paquete, consulte
+[enlace=empaquetado estandar de Arch]
