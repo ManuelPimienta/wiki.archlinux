@@ -1,1 +1,19 @@
+Prerequisite software[editar]
+
+First ensure that the necessary tools are installed. Installing the package group base-devel should be sufficient; it includes make and additional tools needed for compiling from source.
+One of the key tools for building packages is makepkg (provided by pacman), which does the following:
+Checks if package dependencies are installed.
+Downloads the source file(s) from the specified server(s).
+Unpacks the source file(s).
+Compiles the software and installs it under a fakeroot environment.
+Strips symbols from binaries and libraries.
+Generates the package meta file which is included with each package.
+Compresses the fakeroot environment into a package file.
+Stores the package file in the configured destination directory, which is the present working directory by default.
+
+Download and test the installation[editar]
+Download the source tarball of the software you want to package, extract it, and follow the author's steps to install the program. Make a note of all commands and/or steps needed to compile and install it. You will be repeating those same commands in the PKGBUILD file.
+Most software authors stick to the 3-step build cycle:
+
+== Traducción ==
 
