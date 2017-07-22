@@ -1,1 +1,21 @@
+When you run makepkg, it will look for a PKGBUILD file in the present working directory. If a PKGBUILD file is found it will download 
+the software's source code and compile it according to the instructions specified in the PKGBUILD file. 
+The instructions must be fully interpretable by the Bash shell. 
+After successful completion, the resulting binaries and metadata of the package, i.e. package version 
+and dependencies, are packed in a pkgname.pkg.tar.xz package file that can be installed with pacman -U <package file>.
 
+To begin with a new package, you should first create an empty working directory, change into that directory, and create a PKGBUILD file. 
+You can either copy the prototype PKGBUILD from the  /usr/share/pacman/ directory to your working directory or copy a PKGBUILD from a 
+similar package. The latter may be useful if you only need to change a few options.
+
+== Traducción ==
+
+Cuando usted ejecuta makepkg, buscará un archivo PKGBUILD en el directorio de trabajo actual. Si se encuentra un archivo PKGBUILD se 
+descargará el código fuente del software y compilará de acuerdo con las instrucciones especificadas en el archivo PKGBUILD. Las instrucciones 
+deben ser completamente interpretables por el shell Bash. Después de la finalización satisfactoria, los binarios y metadatos resultantes 
+del paquete, i.e. la versión del paquete y dependencias, se empaquetan en un archivo de paquete pkgname.pkg.tar.xz que se puede instalar 
+con pacman -U <Archivo de paquete>.
+
+Para comenzar con un nuevo paquete, primero debe crear un directorio de trabajo vacío, entre en ese directorio y cree un archivo PKGBUILD.
+Puede copiar el PKGBUILD de ejemplo desde el directorio /usr/share/pacman/ a su directorio de trabajo o copiar un PKGBUILD de un paquete similar.
+Este último puede ser útil si sólo necesita cambiar algunas opciones.
