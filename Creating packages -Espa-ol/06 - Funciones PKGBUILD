@@ -1,1 +1,62 @@
+== Original ==
 
+There are five functions, listed here in the order they are executed if all of them exist. If one does not exist, it is simply skipped.
+Note: This does not apply to the package() function, as it is required in every PKGBUILD
+== Traducción ==
+Hay cinco funciones, enumeradas aquí en el orden en que se ejecutan si todas existen. Si una no existe, simplemente se omite.
+Nota: Esto no se aplica a la función package (), como se requiere en cada PKGBUILD.
+
+
+== Original ==
+prepare()[editar]
+This function, commands that are used to prepare sources for building are run, such as patching. This function runs right after package 
+extraction, before pkgver() and the build function. If extraction is skipped (makepkg -e), then prepare() is not run.
+Note: (From man PKGBUILD) The function is run in bash -e mode, meaning any command that exits with a non-zero status will cause the 
+function to exit.
+== Traducción ==
+prepare()[editar]
+Esta función, comandos que se utilizan para preparar las fuentes para la construcción se ejecutan, como parches. Esta función se 
+ejecuta justo después de la extracción del paquete, antes de pkgver() Y la función de build. Si la extracción se omite (makepkg -e),
+entonces prepare() no se ejecuta.
+Nota: (Desde man PKGBUILD) La función se ejecuta en modo bash -e, significa que cualquier comando que aparezca con un estado distinto de 
+cero hará que la función termine.
+
+== Original ==
+pkgver()[editar]
+pkgver() runs after the sources are fetched, extracted and prepare() executed. So you can update the pkgver variable during a makepkg 
+stage. 
+This is particularly useful if you are making git/svn/hg/etc. packages, where the build process may remain the same, but the 
+source could be updated every day, even every hour. The old way of doing this was to put the date into the pkgver field which, if the 
+software was not updated, makepkg would still rebuild it thinking the version had changed. Some useful commands for this are git describe, 
+hg identify -ni, etc. Please test these before submitting a PKGBUILD, as a failure in the pkgver() function can stop a build in its tracks.
+Note: pkgver cannot contain spaces or hyphens (-). Using sed to correct this is common.
+== Traducción ==
+pkgver()[editar]
+pkgver() se ejecuta después de la obtención de las fuentes, la extracción y la ejecución de prepare(). Así que uested puede actualizar la 
+variable pkgver durante la etapa makepkg.
+Esto es particularmente útil si está haciendo paquetes git/svn/hg/etc., donde el proceso de construcción puede seguir siendo el mismo,
+pero el codigo fuente podría ser actualizado todos los días, incluso cada hora. La vieja manera de hacer esto era poner la fecha en el 
+campo del pkgver, donde si el Software no se actualizaba, makepkg aún así lo reconstruiría pensando que la versión había cambiado.
+Algunos comandos útiles para esto son git describe, hg identify -ni, etc. Por favor pruebe estos antes de enviar un PKGBUILD, ya que un 
+error en la función pkgver() puede detener la compilación.
+Nota: pkgver no puede contener espacios ni guiones (-). El uso de sed para corregir esto es común.
+
+
+== Original ==
+build()[editar]
+Now you need to implement the build() function in the PKGBUILD file. This function uses common shell commands in Bash syntax to 
+automatically compile software and create a pkg directory to install the software to. This allows makepkg to package files without having 
+to sift through your file system.
+The first step in the build() function is to change into the directory created by uncompressing the source tarball. makepkg will change the
+current directory to $srcdir before executing the  build() function. Therefore, in most cases, like suggested in 
+/usr/share/pacman/PKGBUILD.proto, the first command will look like this:
+cd "$pkgname-$pkgver"
+Now, you need to list the same commands you used when you manually compiled the software. The build() function in essence automates 
+everything you did by hand and compiles the software in the fakeroot build environment. If the software you are packaging uses a configure 
+script, it is good practice to use --prefix=/usr when building packages for pacman. A lot of software installs files relative to the 
+/usr/local directory, which should only be done if you are manually building from source. All Arch Linux packages should use the /usr 
+directory. As seen in the /usr/share/pacman/PKGBUILD.proto file, the next two lines often look like this:
+./configure --prefix=/usr
+make
+Note: If your software does not need to build anything, DO NOT use the build() function. The build() function is not required, but the 
+package() function is.
