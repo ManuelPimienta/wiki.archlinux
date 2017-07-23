@@ -1,1 +1,13 @@
+=== Original ===
+check()[editar]
+Place for calls to make check and similar testing routines. It is highly recommended to have check() as it helps to make sure software 
+has been built correctly and works fine with its dependencies. Users who do not need it (and occasionally maintainers who can not fix 
+a package for this to pass) can disable it using BUILDENV+=('!check') in PKGBUILD/makepkg.conf or call makepkg with --nocheck flag.
+
+=== Traducción ===
+
+Lugar para llamar a {{ic|make check}} para hacer chequeos y rutinas similares de prueba. Es muy recomendable tener check(), ya que 
+ayuda a asegurar que el software se ha construido correctamente y funciona bien con sus dependencias. Usuarios que no lo necesitan 
+(Y ocasionalmente los mantenedores que no pueden arreglar un paquete para que esto pase) puede inhabilitarlo usando BUILDENV+=('!check') 
+en el PKGBUILD/makepkg.conf o llamar makepkg con --nocheck flag.
 
