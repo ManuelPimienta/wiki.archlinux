@@ -11,3 +11,57 @@ ayuda a asegurar que el software se ha construido correctamente y funciona bien 
 (Y ocasionalmente los mantenedores que no pueden arreglar un paquete para que esto pase) puede inhabilitarlo usando BUILDENV+=('!check') 
 en el PKGBUILD/makepkg.conf o llamar makepkg con --nocheck flag.
 
+=== Original ===
+package()[editar]
+
+The final step is to put the compiled files in a directory where makepkg can retrieve them to create a package. This by default is the 
+pkg directory—a simple fakeroot environment. The pkg directory replicates the hierarchy of the root file system of the software's 
+installation paths. If you have to manually place files under the root of your filesystem, you should install them in the  pkg directory 
+under the same directory structure. For example, if you want to install a file to /usr/bin, it should instead be placed under 
+$pkgdir/usr/bin. Very few install procedures require the user to copy dozens of files manually. Instead, for most software, calling 
+make install will do so. The final line should look like the following in order to correctly install the software in the pkg directory:
+
+make DESTDIR="$pkgdir/" install
+
+Note: It is sometimes the case where DESTDIR is not used in the Makefile; you may need to use prefix instead. If the package is built 
+with autoconf / automake, use DESTDIR; this is what is documented in the manuals. If DESTDIR does not work, try building with make 
+prefix="$pkgdir/usr/" install. If that does not work, you will have to look further into the install commands that are executed by 
+"make <...> install".
+
+
+=== Traducción ===
+package()
+
+El paso final es poner los archivos compilados en un directorio donde makepkg puede recuperarlos para crear un paquete. Por defecto es 
+el directorio {{pkg}} - un simple entorno fakeroot. El directorio pkg replica la jerarquía del sistema de archivos raíz de las rutas de 
+instalación del software. Si tiene que colocar manualmente los directorios raíz de su sistema de archivos, debe instalarlos en el 
+directorio pkg bajo la misma estructura de directorios. Por ejemplo, si desea instalar un archivo en /usr/bin, debe colocarse en 
+$pkgdir/usr/bin. Muy pocos procedimientos de instalación requieren que el usuario copie docenas de archivos manualmente. En su lugar, 
+la mayoría de software make install lo hará. La última línea debe ser similar a la siguiente para poder instalar correctamente el 
+software en el directorio pkg:
+
+make DESTDIR="$pkgdir/" install
+
+Nota: A veces está el caso en que DESTDIR no se utiliza en el makefile; puede que tenga que usar prefijo en su lugar. Si el paquete 
+está construido con autoconf / automake, use DESTDIR; esto es lo que se documenta en los manuales. Si DESTDIR no funciona, trate de 
+construir con make prefix="$pkgdir/usr/" install. Si eso no funciona, tendrá que buscar más en los comandos de instalación que son 
+ejecutados por "make <...> install".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
