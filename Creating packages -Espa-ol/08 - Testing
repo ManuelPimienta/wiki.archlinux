@@ -28,9 +28,12 @@ $ namcap PKGBUILD
 $ namcap <package file name>.pkg.tar.xz
 Namcap will:
 Check PKGBUILD contents for common errors and package file hierarchy for unnecessary/misplaced files
+
 Scan all ELF files in package using ldd, automatically reporting which packages with required shared libraries are missing from depends 
 and which can be omitted as transitive dependencies
+
 Heuristically search for missing and redundant dependencies
+
 and much more. Get into the habit of checking your packages with namcap to avoid having to fix the simplest mistakes after package 
 submission.
 
@@ -54,3 +57,22 @@ También asegúrese de que los binarios del paquete realmente funcionan perfecta
 archivos necesarios, pero se bloquea Debido a alguna opción de configuración poco clara que no funciona bien con el resto del sistema.
 Si solo va a compilar paquetes para su propio sistema, entonces usted no necesita preocuparse demasiado sobre este paso de 
 aseguramiento de calidad, después de todo es la única persona que sufre de errores.
+
+Comprobación de la sanidad del paquete
+
+Después de comprobar la funcionalidad del paquete, compruebe si hay errores con namcap:
+$ namcap PKGBUILD
+$ namcap <package file name>.pkg.tar.xz
+
+Namcap deberá:
+
+Compruebar el contenido de PKGBUILD para buscar errores comunes y la jerarquía de archivos de paquetes para archivos 
+innecesarios/extraviados.
+
+Escanea todos los archivos ELF en el paquete usando ldd, informando automáticamente qué paquetes con las bibliotecas compartidas 
+requeridas faltan de las dependencias y que se pueden omitir como dependencias transitivas.
+
+Búsqueda heurística de dependencias perdidas y redundantes
+
+y mucho más. Adquiera el hábito de revisar sus paquetes con namcap para evitar tener que arreglar los errores más simples después de
+la subida del paquete.
