@@ -1,1 +1,56 @@
+=== Original ===
 
+Testing the PKGBUILD and package[editar]
+
+As you are writing the build() function, you will want to test your changes frequently to ensure there are no bugs. You can do this using 
+the makepkg command in the directory containing the  PKGBUILD file. With a properly formatted PKGBUILD, makepkg will create a package; 
+with a broken or unfinished PKGBUILD, it will raise an error.
+
+If makepkg finishes successfully, it will place a file named pkgname-pkgver.pkg.tar.xz in your working directory. This package can be 
+installed with the pacman -U command. However, just because a package file was built does not imply that it is fully functional. It 
+might conceivably contain only the directory and no files whatsoever if, for example, a prefix was specified improperly. You can use 
+pacman's query functions to display a list of files contained in the package and the dependencies it requires with pacman -Qlp 
+[package file] and  pacman -Qip [package file] respectively.
+
+If the package looks sane, then you are done! However, if you plan on releasing the PKGBUILD file, it is imperative that you check and 
+double-check the contents of the depends array.
+
+Also ensure that the package binaries actually run flawlessly! It is annoying to release a package that contains all necessary files, 
+but crashes because of some obscure configuration option that does not quite work well with the rest of the system. If you are only 
+going to compile packages for your own system, though, you do not need to worry too much about this quality assurance step, as you are 
+the only person suffering from mistakes, after all.
+
+
+Checking package sanity[editar]
+
+After testing package functionality check it for errors using namcap:
+$ namcap PKGBUILD
+$ namcap <package file name>.pkg.tar.xz
+Namcap will:
+Check PKGBUILD contents for common errors and package file hierarchy for unnecessary/misplaced files
+Scan all ELF files in package using ldd, automatically reporting which packages with required shared libraries are missing from depends 
+and which can be omitted as transitive dependencies
+Heuristically search for missing and redundant dependencies
+and much more. Get into the habit of checking your packages with namcap to avoid having to fix the simplest mistakes after package 
+submission.
+
+=== Traducción ===
+
+Prueba del PKGBUILD y del paquete
+Al escribir la función build (), querrá probar sus cambios frecuentemente para asegurarse de que no haya errores. Puedes hacerlo 
+usando el comando makepkg en el directorio que contiene el archivo PKGBUILD. Con un PKGBUILD correctamente formateado, makepkg creará 
+un paquete; con un PKGBUILD roto o inacabado, provocará un error.
+
+Si makepkg finaliza correctamente, colocará un archivo denominado pkgname-pkgver.pkg.tar.xz en su directorio de trabajo. 
+Este paquete puede ser instalado con el comando pacman -U. Sin embargo, sólo porque un archivo de paquete fue construido no implica 
+que es totalmente funcional. Eso 11 Posiblemente sólo contenga el directorio y ningún archivo en si, por ejemplo, 
+un prefijo se especificó incorrectamente. Puedes usar las funciones de consulta de pacman para mostrar una lista de archivos contenidos 
+en el paquete y las dependencias que requiere con pacman -Qlp 13 [Archivo de paquete] y pacman -Qip [archivo de paquete], respectivamente.                                                           
+
+¡Si el paquete parece sano, entonces usted a terminado! Sin embargo, si planea liberar el archivo PKGBUILD, es imperativo que compruebe y 
+compruebe de nuevo el contenido de la matriz dependiente.
+
+También asegúrese de que los binarios del paquete realmente funcionan perfectamente! Es molesto liberar un paquete que contiene todos los 
+archivos necesarios, pero se bloquea Debido a alguna opción de configuración poco clara que no funciona bien con el resto del sistema.
+Si solo va a compilar paquetes para su propio sistema, entonces usted no necesita preocuparse demasiado sobre este paso de 
+aseguramiento de calidad, después de todo es la única persona que sufre de errores.
